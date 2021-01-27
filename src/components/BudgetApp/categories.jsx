@@ -1,11 +1,10 @@
-import { useContext } from 'react';
 import styled from 'styled-components';
 
 import Category from './category.jsx';
 import { Store } from './store';
 
 export default function Categories({ dispatch }) {
-    const updateCategory = (categoryIndex, data) => {
+    const updateCategory = (data, categoryIndex) => {
 		dispatch({
 			type: "UPDATE_CATEGORY_NAME",
 		    categoryIndex,
@@ -14,7 +13,7 @@ export default function Categories({ dispatch }) {
 		});
     };
 
-    const updateValue = (categoryIndex, data) => {
+    const updateValue = (data, categoryIndex) => {
 		dispatch({
 			type: "UPDATE_CATEGORY_VALUE",
             categoryIndex,
@@ -33,8 +32,8 @@ export default function Categories({ dispatch }) {
                                 <Category 
                                     key={ `${i}-category` }
                                     categoryIndex={ i }
-                                    updateCategory={ (data) => updateCategory(i, data) }
-                                    updateValue={ (data) => updateValue(i, data) }
+                                    updateCategory={ (data) => updateCategory(data, i) }
+                                    updateValue={ (data) => updateValue(data, i) }
                                     data={ c }
                                     finePrint={ state.finePrint[i] } />    
                             ))}    
@@ -55,4 +54,3 @@ const CategoriesContainer = styled.div.attrs({
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 `;
-

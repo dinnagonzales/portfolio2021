@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import Expenses from './expenses';
 
 export default function Category(props) {
     const {
@@ -28,12 +30,12 @@ export default function Category(props) {
                 { expenses.map( (e, index) => {
                     const { label, value } = e;
 
-                    return(
-                        <div key={ `${index}-percent` }>
-                            <input placeholder={ 'type' } value={ label || '' } onChange={ (e) => { updateCategory({ index, label: e.target.value }) } }/>
-                            <input placeholder={ '$' } value={ value || '' } onChange={ (e) => { updateValue({ index, value: e.target.value }) } }/>
-                        </div>
-                    );
+                    return <Expenses key={ `${index}-percent` }
+                            label={ label }
+                            value={ value }
+                            index={ index }
+                            updateCategory={ (index, label) => { updateCategory(index, label) } }
+                            updateValue={ (index, value) => { updateValue(index, value) } } />;
                 }) }     
             </div>
             <div className={ 'totals'}> {/* Label / Total */}
@@ -107,4 +109,3 @@ const CategoryContainer = styled.div.attrs({
         margin: 45px 0 0;
     }
 `;
-
