@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export default function Category(props) {
     const {
+        finePrint,
         updateCategory,
         updateValue,
         data,
@@ -36,12 +37,16 @@ export default function Category(props) {
                 }) }     
             </div>
             <div className={ 'totals'}> {/* Label / Total */}
-                <div>Left to budget</div>
-                <div>{ budget - sum }</div>
+                <div>Sum</div>
+                <div className={ 'amount' }>$ { sum }</div>
             </div>
             <div className={ 'totals'}> {/* Label / Total */}
-                <div>Sum</div>
-                <div className={ status }>{ sum }</div>
+                <div>Left to budget</div>
+                <div className={ `${status} amount` }>$ { budget - sum }</div>
+            </div>
+  
+            <div className={ 'finePrint'}>
+                { finePrint }
             </div>
         </CategoryContainer>
     );
@@ -54,6 +59,7 @@ const CategoryContainer = styled.div.attrs({
     border: 2px solid lightgrey;
     border-radius: 4px;
     padding: 1rem;
+
     .budget{
         display: grid;
         gap: 1rem;
@@ -66,6 +72,7 @@ const CategoryContainer = styled.div.attrs({
             display: inline-block;
         }
     }
+
     .expenses{
         margin: 30px 0;
         
@@ -77,7 +84,10 @@ const CategoryContainer = styled.div.attrs({
             height: 30px;
         }
     }
+
     .totals{
+        text-align: left;
+
         display: grid;
         grid-template-columns: repeat(2, minmax(100px, 1fr));
 
@@ -87,6 +97,14 @@ const CategoryContainer = styled.div.attrs({
         .bad{
             color: red;
         }
+        .amount{
+            padding-left: 10px;
+        }
+    }
+
+    .finePrint{
+        font-size: 12px;
+        margin: 45px 0 0;
     }
 `;
 

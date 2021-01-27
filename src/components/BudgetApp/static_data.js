@@ -1,5 +1,109 @@
+const clearCategories = [
+    {
+        category: 'Needs - 50%',
+        percent: 0.50,
+        budget: 0,
+        sum: 0,
+        expenses: [
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+        ]
+    },
+    {
+        category: 'Wants - 30%',
+        percent: 0.30,
+        budget: 0,
+        sum: 0,
+        expenses: [
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+        ]
+    },
+    {
+        category: 'Savings - 20%',
+        percent: 0.50,
+        budget: 0,
+        sum: 0,
+        expenses: [
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+            {
+                label: '',
+                value: 0,
+            },
+        ]
+    },
+];
+
 const initialState = {
     takeHome: 3500,
+    finePrint: [
+        '50% on things you need, necessary expenses like: mortgage or rent, utilities, health care, basic groceries, transportation',
+        '30% on things you want, expenses like: cable, internet, phone, dining out, entertainment, personal care, shopping, travel',
+        '20% on building wealth: emergency fund, retirement, savings, student loans'
+    ],
     categories: [
         {
             category: 'Needs - 50%',
@@ -112,4 +216,4 @@ const initialState = {
     ]
 };
 
-export default initialState;
+export { initialState as default, clearCategories };

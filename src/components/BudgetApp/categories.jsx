@@ -23,12 +23,17 @@ export default function Categories({ dispatch }) {
 		});
     };
 
+    const clearAll = () => {
+		dispatch({
+            type: "CLEAR_ALL",
+        });
+    };
+
     return (
         <Store.Consumer>
             { ({state}) => {
                 return(
                     <>
-                        <h2>Categories</h2>
                         <CategoriesContainer>
                             { state.categories.map( (c, i) => (
                                 <Category 
@@ -36,10 +41,11 @@ export default function Categories({ dispatch }) {
                                     categoryIndex={ i }
                                     updateCategory={ (data) => updateCategory(i, data) }
                                     updateValue={ (data) => updateValue(i, data) }
-                                    data={ c } />    
+                                    data={ c }
+                                    finePrint={ state.finePrint[i] } />    
                             ))}    
                         </CategoriesContainer>
-                    
+                        <button onClick={ clearAll }>Clear All Expenses</button>
                     </>
                 );
             }
@@ -51,6 +57,7 @@ export default function Categories({ dispatch }) {
 const CategoriesContainer = styled.div.attrs({
     className: 'CategoriesContainer'
 })`
+    padding: 20px;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

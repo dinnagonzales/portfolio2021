@@ -26,7 +26,7 @@ export default function BudgetApp() {
 		<Provider value={{ state, dispatch }}>
 			<BudgetAppContainer>
 				<h1>
-					BudgetApp
+				The 50/30/20 Budget Guide
 				</h1>
 				<div className={ 'grid' }>
 					<div>Take Home Money:</div>
@@ -37,8 +37,17 @@ export default function BudgetApp() {
 					<div>{ state.takeHome - totalBudgeted }</div>
 				</div>
 
-
 				<Categories dispatch={ dispatch }/>
+				<div className={ 'disclaimer' }>Guideline from &nbsp; 
+					<a target={ '_blank' } href={ 'https://www.amazon.com/All-Your-Worth-Ultimate-Lifetime/dp/0743269888' }>
+						All Your Worth: The Ultimate Lifetime Money Plan 
+					</a>
+					<p>Created by: Dinna Gonzales</p>
+					<p>Contact: <a href={'mailto:dinnagonzales.05@gmail.com'}>
+							Email
+						</a>
+					</p>
+				</div>
 			</BudgetAppContainer>
 		</Provider>
 	);
@@ -48,10 +57,9 @@ const BudgetAppContainer = styled.div.attrs({
 	className: 'BudgetAppContainer'
 })`
 	font-size: 16px;
-	border: 1px solid purple;
 	text-align: center;
 	max-width: 1000px;
-	margin: 50px auto;
+	margin: 0 auto;
 	padding: 25px;
 
 	.grid{
@@ -72,5 +80,17 @@ const BudgetAppContainer = styled.div.attrs({
 		input{
 			text-align: right;
 		}
-    }
+	}
+
+	button{
+		margin: 20px 0;
+	}
+
+	.disclaimer{
+		margin: 15px auto;
+		p{
+			font-size: 12px;
+			margin: 10px 0;
+		}
+	}
 `;
