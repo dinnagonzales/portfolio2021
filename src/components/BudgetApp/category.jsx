@@ -1,19 +1,37 @@
 import styled from 'styled-components';
 
 export default function Category(props) {
+    const {
+        updateCategory,
+        updateValue,
+        data,
+    } = props;
+
+    const {
+        category,
+        percent,
+        budget,
+        expenses
+    } = data;
+
     return (
         <CategoryContainer>
-            CategoryContainer
+            <h3>{ category }</h3>
             <div className={ 'budget' }> {/* Percent / $ */}
-                <div>50%</div>
-                <div>$2,000</div>
+                <div /> 
+                <input placeholder={ '$' } value={ budget } readOnly/>
             </div>
             <div className={ 'expenses' }> {/* Expenses / cost */}
-                
-                <div>
-                    <input type={ 'text' } placeholder={ 'type' } />
-                    <input type={ 'number' } placeholder={ '$' } />
-                </div>                
+                { expenses.map( (e, index) => {
+                    const { label, value } = e;
+
+                    return(
+                        <div key={ `${index}-percent` }>
+                            <input placeholder={ 'type' } value={ label || '' } onChange={ (e) => { updateCategory({ index, label: e.target.value }) } }/>
+                            <input placeholder={ '$' } value={ value || '' } onChange={ (e) => { updateValue({ index, value: e.target.value }) } }/>
+                        </div>
+                    );
+                }) }     
             </div>
 
             <div className={ 'totals'}> {/* Label / Total */}
@@ -35,9 +53,12 @@ const CategoryContainer = styled.div.attrs({
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat(2, minmax(100px, 1fr));
-        & > div{
-            border: 1px solid orange;
+        justify-content: end;
+        & > * {
             margin: 1rem 0;
+        }
+        input{
+            display: inline-block;
         }
     }
     .expenses{
@@ -45,6 +66,7 @@ const CategoryContainer = styled.div.attrs({
         
         & > div{
             display: grid;
+            margin: 10px 0;
             grid-template-columns: repeat(2, minmax(100px, 1fr));
             gap: 1rem;
             height: 30px;
