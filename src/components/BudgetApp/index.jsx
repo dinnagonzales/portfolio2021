@@ -6,7 +6,9 @@ import Categories from './categories.jsx';
 export default function BudgetApp() {
 	return (
 		<BudgetAppContainer>
-			BudgetApp
+			<h1>
+				BudgetApp
+			</h1>
 			<label>
 				Take Home Money:
 				<input type="number" />
@@ -22,6 +24,5 @@ const BudgetAppContainer = styled.div.attrs({
 })`
 	border: 1px solid purple;
 	margin: 50px auto;
-	min-height: 500px;
-	width: 500px;
+	padding: 25px;
 `;
