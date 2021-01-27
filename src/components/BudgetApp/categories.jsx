@@ -15,7 +15,6 @@ export default function Categories({ dispatch }) {
     };
 
     const updateValue = (categoryIndex, data) => {
-        console.log(categoryIndex, data);
 		dispatch({
 			type: "UPDATE_CATEGORY_VALUE",
             categoryIndex,
@@ -23,6 +22,7 @@ export default function Categories({ dispatch }) {
             value: data.value,
 		});
     };
+
     return (
         <Store.Consumer>
             { ({state}) => {

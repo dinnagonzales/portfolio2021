@@ -5,6 +5,7 @@ const initialState = {
             category: 'Needs - 50%',
             percent: 0.50,
             budget: 1750,
+            sum: 1750,
             expenses: [
                 {
                     label: 'Housing: Rent',
@@ -40,6 +41,7 @@ const initialState = {
             category: 'Wants - 30%',
             percent: 0.30,
             budget: 1050,
+            sum: 1050,
             expenses: [
                 {
                     label: 'Food: Restaurants',
@@ -57,12 +59,25 @@ const initialState = {
                     label: 'Investment: IRA',
                     value: 500,
                 },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
             ]
         },
         {
             category: 'Savings - 20%',
             percent: 0.20,
             budget: 700,
+            sum: 700,
             expenses: [
                 {
                     label: 'Emergency Fund',
@@ -71,6 +86,26 @@ const initialState = {
                 {
                     label: 'Debt',
                     value: 200,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
                 },
             ]
         }

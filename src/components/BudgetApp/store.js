@@ -51,6 +51,10 @@ const reducer = (state, action) => {
                 ...categories[categoryIndex]['expenses'][expenseIndex],
                 value,
             };
+            
+            categories[categoryIndex]['sum'] = categories[categoryIndex]['expenses'].reduce((sum, e) =>{
+                return sum += Number(e.value);
+            }, 0)
 
             return {
                 ...state,

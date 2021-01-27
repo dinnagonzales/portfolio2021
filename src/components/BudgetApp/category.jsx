@@ -9,10 +9,12 @@ export default function Category(props) {
 
     const {
         category,
-        percent,
+        sum,
         budget,
         expenses
     } = data;
+
+    const status = budget >= sum ? 'good' : 'bad';
 
     return (
         <CategoryContainer>
@@ -33,12 +35,14 @@ export default function Category(props) {
                     );
                 }) }     
             </div>
-
             <div className={ 'totals'}> {/* Label / Total */}
-                <div>Over/Under/Just Rights</div>
-                <div>$2,000</div>
+                <div>Left to budget</div>
+                <div>{ budget - sum }</div>
             </div>
-           
+            <div className={ 'totals'}> {/* Label / Total */}
+                <div>Sum</div>
+                <div className={ status }>{ sum }</div>
+            </div>
         </CategoryContainer>
     );
 }
@@ -46,6 +50,7 @@ export default function Category(props) {
 const CategoryContainer = styled.div.attrs({
     className: 'CategoryContainer'
 })`
+    font-size: 16px;
     border: 2px solid lightgrey;
     border-radius: 4px;
     padding: 1rem;
@@ -76,6 +81,12 @@ const CategoryContainer = styled.div.attrs({
         display: grid;
         grid-template-columns: repeat(2, minmax(100px, 1fr));
 
+        .good{
+            color: green;
+        }
+        .bad{
+            color: red;
+        }
     }
 `;
 
