@@ -23,12 +23,6 @@ export default function Categories({ dispatch }) {
 		});
     };
 
-    const clearAll = () => {
-		dispatch({
-            type: "CLEAR_ALL",
-        });
-    };
-
     return (
         <Store.Consumer>
             { ({state}) => {
@@ -45,7 +39,6 @@ export default function Categories({ dispatch }) {
                                     finePrint={ state.finePrint[i] } />    
                             ))}    
                         </CategoriesContainer>
-                        <button onClick={ clearAll }>Clear All Expenses</button>
                     </>
                 );
             }

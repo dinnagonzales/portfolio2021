@@ -1,5 +1,5 @@
 
-import React, { createContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import styled from 'styled-components';
 
 import Categories from './categories.jsx';
@@ -16,6 +16,12 @@ export default function BudgetApp() {
 		});
 	};
 
+	const clearAll = () => {
+		dispatch({
+            type: "CLEAR_ALL",
+        });
+	};
+		
 	const totalBudgeted = state.categories.reduce((sum, c) =>{
 		return sum += Number(c.sum);
 	}, 0);
@@ -36,7 +42,8 @@ export default function BudgetApp() {
 					<div className={ diff }>Left to budget:</div>
 					<div>{ state.takeHome - totalBudgeted }</div>
 				</div>
-
+				<button onClick={ clearAll }>Clear All Expenses</button>
+    
 				<Categories dispatch={ dispatch }/>
 				<div className={ 'disclaimer' }>Guideline from &nbsp; 
 					<a target={ '_blank' } href={ 'https://www.amazon.com/All-Your-Worth-Ultimate-Lifetime/dp/0743269888' }>
@@ -79,6 +86,9 @@ const BudgetAppContainer = styled.div.attrs({
 
 		input{
 			text-align: right;
+			border: 1px solid purple;
+			border-radius: 4px;
+			height: 20px;
 		}
 	}
 

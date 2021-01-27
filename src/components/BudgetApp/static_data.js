@@ -101,7 +101,7 @@ const initialState = {
     takeHome: 3500,
     finePrint: [
         '50% on things you need, necessary expenses like: mortgage or rent, utilities, health care, basic groceries, transportation',
-        '30% on things you want, expenses like: cable, internet, phone, dining out, entertainment, personal care, shopping, travel',
+        '30% on things you want, additional expenses like: cable, internet, phone, dining out, entertainment, personal care, shopping, travel',
         '20% on building wealth: emergency fund, retirement, savings, student loans'
     ],
     categories: [
