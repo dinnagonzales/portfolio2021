@@ -29,6 +29,10 @@ const clearCategories = [
                 label: '',
                 value: 0,
             },
+            {
+                label: '',
+                value: 0,
+            },
         ]
     },
     {
@@ -61,6 +65,10 @@ const clearCategories = [
                 label: '',
                 value: 0,
             },
+            {
+                label: '',
+                value: 0,
+            },
         ]
     },
     {
@@ -69,6 +77,10 @@ const clearCategories = [
         budget: 0,
         sum: 0,
         expenses: [
+            {
+                label: '',
+                value: 0,
+            },
             {
                 label: '',
                 value: 0,
