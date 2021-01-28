@@ -65,7 +65,7 @@ const clearCategories = [
     },
     {
         category: 'Savings - 20%',
-        percent: 0.50,
+        percent: 0.20,
         budget: 0,
         sum: 0,
         expenses: [
