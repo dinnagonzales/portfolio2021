@@ -1,10 +1,9 @@
 import { createContext } from 'react';
 import initialState, { clearCategories } from './static_data.js';
 
-const Store = createContext(initialState);
-const { Provider, Consumer } = Store;
+const Context = createContext(null);
 
-const reducer = (state, action) => {
+const BudgetReducer = (state, action) => {
     switch(action.type) {
         case 'UPDATE_TAKE_HOME':{
             const takeHome = action.value;
@@ -78,8 +77,8 @@ const reducer = (state, action) => {
             }
         }
         default:
-            throw new Error();
+            return initialState;
     };
 };
 
-export { reducer as default, Provider, Store };
+export { BudgetReducer as default, Context };

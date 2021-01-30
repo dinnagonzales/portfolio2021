@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 import Categories from './categories.jsx';
 import initialState from './static_data.js';
-import reducer, { Provider } from './store';
+import BudgetReducer, { Context } from './store';
 
 export default function BudgetApp() {
-	const [state, dispatch] = useReducer(reducer, initialState);
+	const [state, dispatch] = useReducer(BudgetReducer, initialState);
+
 	const updateTakeHome = (e) => {
 		const value = e.target.value;
 		dispatch({
@@ -29,7 +30,7 @@ export default function BudgetApp() {
 	const diff = state.takeHome - totalBudgeted >= 0 ? 'good' : 'bad';
 
 	return (
-		<Provider value={{ state, dispatch }}>
+		<Context.Provider value={{ state, dispatch }}>
 			<BudgetAppContainer>
 				<h1>
 				The 50/30/20 Budget Guide
@@ -44,7 +45,8 @@ export default function BudgetApp() {
 				</div>
 				<button onClick={ clearAll }>Clear All Expenses</button>
     
-				<Categories dispatch={ dispatch }/>
+				<Categories />
+
 				<div className={ 'disclaimer' }>Guideline from &nbsp; 
 					<a target={ '_blank' } href={ 'https://www.amazon.com/All-Your-Worth-Ultimate-Lifetime/dp/0743269888' }>
 						All Your Worth: The Ultimate Lifetime Money Plan 
@@ -54,9 +56,10 @@ export default function BudgetApp() {
 							Email
 						</a>
 					</p>
+					<a href="https://www.freepik.com/vectors/people">People vector created by pch.vector - www.freepik.com</a>
 				</div>
 			</BudgetAppContainer>
-		</Provider>
+		</Context.Provider>
 	);
 }
 

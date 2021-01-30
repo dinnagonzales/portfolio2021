@@ -1,9 +1,12 @@
+import React, { useContext, useReducer } from 'react';
 import styled from 'styled-components';
 
 import Category from './category.jsx';
-import { Store } from './store';
+import BudgetReducer, { Context } from './store';
 
-export default function Categories({ dispatch }) {
+export default function Categories() {
+    const { dispatch } = useContext(Context);
+
     const updateCategory = (data, categoryIndex) => {
 		dispatch({
 			type: "UPDATE_CATEGORY_NAME",
@@ -23,7 +26,7 @@ export default function Categories({ dispatch }) {
     };
 
     return (
-        <Store.Consumer>
+        <Context.Consumer>
             { ({state}) => {
                 return(
                     <>
@@ -42,7 +45,7 @@ export default function Categories({ dispatch }) {
                 );
             }
 }
-        </Store.Consumer>
+        </Context.Consumer>
     );
 }
 
