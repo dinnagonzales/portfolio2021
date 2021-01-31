@@ -64,7 +64,7 @@ const BudgetReducer = (state, action) => {
         case 'CLEAR_ALL':{
             const categories = clearCategories.map( c =>{
                 const budget = state.takeHome * c.percent;
-                console.log(budget);
+
                 return {
                     ...c,
                     budget,

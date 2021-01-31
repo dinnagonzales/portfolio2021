@@ -1,69 +1,28 @@
 
 import React, { useReducer } from 'react';
 import styled from 'styled-components';
-
+import IncomeSection from './income.jsx';
 import Categories from './categories.jsx';
 import initialState from './static_data.js';
 import BudgetReducer, { Context } from './store';
 
+import Footer from './footer';
+
 export default function BudgetApp() {
 	const [state, dispatch] = useReducer(BudgetReducer, initialState);
-
-	const updateTakeHome = (e) => {
-		const value = e.target.value;
-		dispatch({
-			type: "UPDATE_TAKE_HOME",
-			value,
-		});
-	};
-
-	const clearAll = () => {
-		dispatch({
-            type: "CLEAR_ALL",
-        });
-	};
-		
-	const totalBudgeted = state.categories.reduce((sum, c) =>{
-		return sum += Number(c.sum);
-	}, 0);
-
-	const diff = state.takeHome - totalBudgeted >= 0 ? 'good' : 'bad';
 
 	return (
 		<Context.Provider value={{ state, dispatch }}>
 			<BudgetAppContainer>
-				<h1>
-				The 50/30/20 Budget Guide
-				</h1>
-				<div className={ 'grid' }>
-					<div>Take Home Money:</div>
-					<div><input value={ state.takeHome } onChange={ updateTakeHome }/></div>
-					<div>Total Budgetted:</div>
-					<div>{ totalBudgeted }</div>
-					<div className={ diff }>Left to budget:</div>
-					<div>{ state.takeHome - totalBudgeted }</div>
-				</div>
-				<button onClick={ clearAll }>Clear All Expenses</button>
-    
+				<IncomeSection />
 				<Categories />
-
-				<div className={ 'disclaimer' }>Guideline from &nbsp; 
-					<a target={ '_blank' } href={ 'https://www.amazon.com/All-Your-Worth-Ultimate-Lifetime/dp/0743269888' }>
-						All Your Worth: The Ultimate Lifetime Money Plan 
-					</a>
-					<p>Created by: Dinna Gonzales</p>
-					<p>Contact: <a href={'mailto:dinnagonzales.05@gmail.com'}>
-							Email
-						</a>
-					</p>
-					<a href="https://www.freepik.com/vectors/people">People vector created by pch.vector - www.freepik.com</a>
-				</div>
 			</BudgetAppContainer>
+			<Footer />
 		</Context.Provider>
 	);
 }
 
-const BudgetAppContainer = styled.div.attrs({
+const BudgetAppContainer = styled.main.attrs({
 	className: 'BudgetAppContainer'
 })`
 	font-size: 16px;
@@ -99,11 +58,11 @@ const BudgetAppContainer = styled.div.attrs({
 		margin: 20px 0;
 	}
 
-	.disclaimer{
-		margin: 15px auto;
-		p{
-			font-size: 12px;
-			margin: 10px 0;
-		}
-	}
+	// .disclaimer{
+	// 	margin: 15px auto;
+	// 	p{
+	// 		font-size: 12px;
+	// 		margin: 10px 0;
+	// 	}
+	// }
 `;

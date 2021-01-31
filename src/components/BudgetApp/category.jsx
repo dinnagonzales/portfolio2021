@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Expenses from './expenses';
 
+import { Section } from '../../styles/common';
+
 export default function Category(props) {
     const {
         finePrint,
@@ -54,13 +56,10 @@ export default function Category(props) {
     );
 }
 
-const CategoryContainer = styled.div.attrs({
+const CategoryContainer = styled(Section).attrs({
     className: 'CategoryContainer'
 })`
     font-size: 16px;
-    border: 2px solid lightgrey;
-    border-radius: 4px;
-    padding: 1rem;
 
     .budget{
         display: grid;
