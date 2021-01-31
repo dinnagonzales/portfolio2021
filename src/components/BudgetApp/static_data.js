@@ -1,116 +1,63 @@
-const clearCategories = [
+const expenses = [
     {
+        label: '',
+        value: 0,
+    },
+    {
+        label: '',
+        value: 0,
+    },
+    {
+        label: '',
+        value: 0,
+    },
+    {
+        label: '',
+        value: 0,
+    },
+    {
+        label: '',
+        value: 0,
+    },
+    {
+        label: '',
+        value: 0,
+    },
+    {
+        label: '',
+        value: 0,
+    },
+];
+
+const categories = [
+    {
+        type: 'needs',
         category: 'Needs - 50%',
+        color: 'mojo',
         percent: 0.50,
         budget: 0,
         sum: 0,
-        expenses: [
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-        ]
     },
     {
+        type: 'wants',
         category: 'Wants - 30%',
+        color: 'goldenBell',
         percent: 0.30,
         budget: 0,
         sum: 0,
-        expenses: [
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-        ]
     },
     {
+        type: 'savings',
         category: 'Savings - 20%',
+        color: 'cornflowerBlue',
         percent: 0.20,
         budget: 0,
         sum: 0,
-        expenses: [
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-            {
-                label: '',
-                value: 0,
-            },
-        ]
     },
 ];
 
 const initialState = {
-    takeHome: 3500,
+    takeHome: 4000,
     finePrint: [
         '50% on things you need, necessary expenses like: mortgage or rent, utilities, health care, basic groceries, transportation',
         '30% on things you want, additional expenses like: cable, internet, phone, dining out, entertainment, personal care, shopping, travel',
@@ -118,114 +65,33 @@ const initialState = {
     ],
     categories: [
         {
+            type: 'needs',
             category: 'Needs - 50%',
+            color: 'mojo',
             percent: 0.50,
-            budget: 1750,
-            sum: 1750,
-            expenses: [
-                {
-                    label: 'Housing: Rent',
-                    value: 900,
-                },
-                {
-                    label: 'Housing: Utilities',
-                    value: 40,
-                },
-                {
-                    label: 'Car: Payment',
-                    value: 300,
-                },
-                {
-                    label: 'Car: Gas',
-                    value: 150,
-                },
-                {
-                    label: 'Car: Insurance',
-                    value: 100,
-                },
-                {
-                    label: 'Phone',
-                    value: 60,
-                },
-                {
-                    label: 'Food: Groceries',
-                    value: 200,
-                },
-            ]
+            budget: 2000,
+            sum: 0,
+            expenses: [ ...expenses ],
         },
         {
+            type: 'wants',
             category: 'Wants - 30%',
+            color: 'goldenBell',
             percent: 0.30,
-            budget: 1050,
-            sum: 1050,
-            expenses: [
-                {
-                    label: 'Food: Restaurants',
-                    value: 200,
-                },
-                {
-                    label: 'Subscriptions',
-                    value: 100,
-                },
-                {
-                    label: 'Investment: Robinhood',
-                    value: 250,
-                },
-                {
-                    label: 'Investment: IRA',
-                    value: 500,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-            ]
+            budget: 1200,
+            sum: 0,
+            expenses: [ ...expenses ],
         },
         {
+            type: 'savings',
             category: 'Savings - 20%',
-            percent: 0.20,
-            budget: 700,
-            sum: 700,
-            expenses: [
-                {
-                    label: 'Emergency Fund',
-                    value: 500,
-                },
-                {
-                    label: 'Debt',
-                    value: 200,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
-                    value: 0,
-                },
-            ]
-        }
+            color: 'cornflowerBlue',
+            percent: 0.2,
+            budget: 800,
+            sum: 0,
+            expenses: [ ...expenses ],
+        },
     ]
 };
 
-export { initialState as default, clearCategories };
+export { initialState as default, expenses, categories };

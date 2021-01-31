@@ -1,5 +1,5 @@
 import { createContext } from 'react';
-import initialState, { clearCategories } from './static_data.js';
+import initialState, { categories, expenses } from './static_data.js';
 
 const Context = createContext(null);
 
@@ -62,18 +62,19 @@ const BudgetReducer = (state, action) => {
             }
         }
         case 'CLEAR_ALL':{
-            const categories = clearCategories.map( c =>{
+            const clearCategories = [ ...categories ].map( (c, i) =>{
                 const budget = state.takeHome * c.percent;
 
                 return {
                     ...c,
                     budget,
+                    expenses: [...expenses],
                 }
             });
 
             return {
                 ...state,
-                categories,
+                categories: clearCategories,
             }
         }
         default:

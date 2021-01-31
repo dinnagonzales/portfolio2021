@@ -12,11 +12,14 @@ export const colors = {
     tanHide: '#FA9746',
     //Grey
     lightGrey: '#d3d3d3',
+    abbey: '#555F61',
     //White
     white: '#ffffff',
 };
 
 export const theme = {
+    text: colors.abbey,
+    error: colors.mojo,
     border: colors.lightGrey,
     darkBackground: colors.cello,
 };

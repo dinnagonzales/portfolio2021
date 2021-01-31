@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import { Context }  from './store';
-
-import Button from '@material-ui/core/Button';
 import styled from 'styled-components';
+
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import ProgressBar from '../common/progress_bar';
+
 import img from '../../images/income-bg.png';
 
 import { Section } from '../../styles/common';
 import media from '../../styles/media';
+import { formatDollarAmount } from '../../utils';
 
 export default function Income() {
     const { state, dispatch } = useContext(Context);
@@ -25,27 +29,37 @@ export default function Income() {
         });
 	};
 		
-	const totalBudgeted = state.categories.reduce((sum, c) =>{
+	const totalBudget = state.categories.reduce((sum, c) =>{
 		return sum += Number(c.sum);
 	}, 0);
 
-	const diff = state.takeHome - totalBudgeted >= 0 ? 'good' : 'bad';
+	const { takeHome } = state;
+	const diff = takeHome - totalBudget >= 0 ? 'good' : 'bad';
+
+	const totalBudgeted = formatDollarAmount(totalBudget);
+	const leftToBudget = formatDollarAmount(takeHome - totalBudget);
+	const progress = Math.min(takeHome, Math.round((totalBudget * 100)/takeHome));
 
 	return (
         <IncomeContainer>
 			<div className={ 'background' }></div>
-			<div>
-				<h1>
-				The 50/30/20 Budget Guide
-				</h1>
-				<div className={ 'grid' }>
-					<div>Take Home Money:</div>
-					<div><input value={ state.takeHome } onChange={ updateTakeHome }/></div>
-					<div>Total Budgetted:</div>
-					<div>{ totalBudgeted }</div>
-					<div className={ diff }>Left to budget:</div>
-					<div>{ state.takeHome - totalBudgeted }</div>
+
+			<div className={ 'NumbersContainer' }>
+				<div>
+					<TextField id="outlined-basic" label="Income" variant="outlined" value={ state.takeHome } onChange={ updateTakeHome } />
 				</div>
+
+				<ProgressBar value={ progress } min={ '0%' } max={ '100%' } />
+
+				<div className={ 'numbers' }>
+					<span>Current Total:</span>
+					<span>{ totalBudgeted }</span>
+				</div>
+				<div className={ `numbers ${diff}` }>
+					<span>Left to budget:</span>
+					<span>{ leftToBudget }</span>
+				</div>
+
 				<Button variant={ 'contained' } onClick={ clearAll }>Clear</Button>
 			</div>
 		</IncomeContainer>
@@ -55,6 +69,9 @@ export default function Income() {
 const IncomeContainer = styled(Section).attrs({
 	className: 'IncomeContainer'
 })`
+	min-height: 300px;
+	padding-top: 50px;
+	text-align: right;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 
@@ -62,9 +79,22 @@ const IncomeContainer = styled(Section).attrs({
 		grid-template-columns: 1fr;
 	`};
 
+
+	.NumbersContainer{
+		text-align: right;
+		padding: 0 15px 0 100px;
+	}
+
+	.numbers{
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		text-align: left;
+		margin: 15px 0;
+	}
+
 	.background{
 		background-image: url(${img});
-		background-size: auto 100%;
+		background-size: 100% auto;
 		background-position: bottom left;
 		background-repeat: no-repeat;
 	}

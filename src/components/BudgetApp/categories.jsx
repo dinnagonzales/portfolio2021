@@ -2,7 +2,7 @@ import React, { useContext, useReducer } from 'react';
 import styled from 'styled-components';
 
 import Category from './category.jsx';
-import BudgetReducer, { Context } from './store';
+import { Context } from './store';
 
 export default function Categories() {
     const { dispatch } = useContext(Context);
@@ -52,7 +52,7 @@ export default function Categories() {
 const CategoriesContainer = styled.div.attrs({
     className: 'CategoriesContainer'
 })`
-    padding: 20px;
+    padding: 20px 0;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
