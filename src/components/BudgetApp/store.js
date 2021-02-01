@@ -77,6 +77,13 @@ const BudgetReducer = (state, action) => {
                 categories: clearCategories,
             }
         }
+        case 'SAVE':{
+            window.localStorage.setItem('budget', JSON.stringify(state));
+
+            return {
+                ...state
+            }
+        }
         default:
             return initialState;
     };
