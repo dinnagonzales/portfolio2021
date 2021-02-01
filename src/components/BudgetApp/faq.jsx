@@ -24,6 +24,9 @@ export default function FAQ(props) {
             </span>
         	<Modal label={ 'Sample Budget' } buttonCopy={ 'Learn More' }>
                 <ModalBody>
+                    <p>Q: What is the 50/30/20 Budget?</p>
+                    <p>A: The 50/30/20 rule of thumb is a set of easy guidelines for how to plan your budget. Using them, you allocate your after-tax income to the following categories: Needs, Wants, and Savings.</p>
+                    <p>Q: What expenses fall on each category?</p>
                     { props.list.map((l, i) => {
                         const{ key, header, body } = l;
                         return(
@@ -42,6 +45,7 @@ export default function FAQ(props) {
                             </Accordion>
                         );
                     }) }
+                    <p>Here is a sample breakdown for someone who takes home $4,000 after taxes each month:</p>
                     <img src={ sample } alt='' />
                 </ModalBody>
 			</Modal>
