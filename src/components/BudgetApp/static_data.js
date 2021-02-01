@@ -1,3 +1,8 @@
+const expense = {
+    label: '',
+    value: 0,
+};
+
 const expenses = [
     {
         label: '',
@@ -89,7 +94,7 @@ const initialState = {
                     value: 0,
                 },
                 {
-                    label: 'Transportation',
+                    label: 'Utilities',
                     value: 0,
                 },
                 {
@@ -97,11 +102,11 @@ const initialState = {
                     value: 0,
                 },
                 {
-                    label: 'Insurance',
+                    label: 'Transportation',
                     value: 0,
                 },
                 {
-                    label: '',
+                    label: 'Insurance',
                     value: 0,
                 },
                 {
@@ -123,23 +128,23 @@ const initialState = {
             sum: 0,
             expenses: [
                 {
+                    label: 'Donation',
+                    value: 0,
+                },
+                {
                     label: 'Dining Out',
                     value: 0,
                 },
                 {
-                    label: 'Subscription',
+                    label: 'Gym Membership',
                     value: 0,
                 },
                 {
-                    label: '',
+                    label: 'Online Subscriptions',
                     value: 0,
                 },
                 {
-                    label: '',
-                    value: 0,
-                },
-                {
-                    label: '',
+                    label: 'Personal Care',
                     value: 0,
                 },
                 {
@@ -165,15 +170,15 @@ const initialState = {
                     value: 0,
                 },
                 {
-                    label: 'Sinking Funds: Travel',
-                    value: 0,
-                },
-                {
                     label: 'Debt',
                     value: 0,
                 },
                 {
-                    label: 'Insurance',
+                    label: 'Sinking Funds: Travel',
+                    value: 0,
+                },
+                {
+                    label: '',
                     value: 0,
                 },
                 {
@@ -193,4 +198,4 @@ const initialState = {
     ]
 };
 
-export { initialState as default, expenses, categories };
+export { initialState as default, expenses, expense, categories };

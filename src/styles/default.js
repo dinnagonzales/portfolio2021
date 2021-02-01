@@ -23,4 +23,5 @@ export const theme = {
     link: colors.cornflowerBlue,
     border: colors.lightGrey,
     darkBackground: colors.cello,
+    button: colors.goldenBell,
 };

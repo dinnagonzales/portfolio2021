@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
+import media from '../../styles/media';
 
 function Expenses(props) {
     const {
@@ -39,9 +40,12 @@ const ExpensesContainer = styled.div.attrs({
 })`
     display: grid;
     margin: 10px 0;
-    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     height: 45px;
+    ${media.mediumUp`
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    `};
 `;
 
 export default React.memo(Expenses, (prev, props) => {

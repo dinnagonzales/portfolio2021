@@ -5,12 +5,21 @@ import IncomeSection from './income.jsx';
 import Categories from './categories.jsx';
 import initialState from './static_data.js';
 import BudgetReducer, { Context } from './store';
-
+import media from '../../styles/media';
 import { theme } from '../../styles/default';
 import Footer from './footer';
 
+var loadState = initialState;
+(function(){
+	if(window.localStorage.getItem('budget')){
+		loadState = JSON.parse(window.localStorage.getItem('budget'));
+	}else{
+		window.localStorage.setItem('budget', JSON.stringify(loadState));
+	}
+})();
+
 export default function BudgetApp() {
-	const [state, dispatch] = useReducer(BudgetReducer, initialState);
+	const [state, dispatch] = useReducer(BudgetReducer, loadState);
 
 	return (
 		<Context.Provider value={{ state, dispatch }}>
@@ -37,5 +46,12 @@ const BudgetAppContainer = styled.main.attrs({
 	gap: 15px;
 	a{
 		color: ${ theme.link };
+	}
+
+	& > * {
+		${media.small`
+			grid-column-start: 1;
+			grid-column-end: 3;
+    	`};
 	}
 `;

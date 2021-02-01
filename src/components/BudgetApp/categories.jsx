@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import Category from './category.jsx';
 import { Context } from './store';
-
+import media from '../../styles/media';
 export default function Categories() {
     const { dispatch } = useContext(Context);
 
@@ -58,5 +58,8 @@ const CategoriesContainer = styled.div.attrs({
 
     display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: 1fr;
+    ${media.mediumUp`
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    `};
 `;

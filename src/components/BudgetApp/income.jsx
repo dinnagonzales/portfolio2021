@@ -19,7 +19,7 @@ import { colors } from '../../styles/default';
 import FAQ from './faq';
 
 import { Section } from '../../styles/common';
-import media from '../../styles/media';
+
 
 import { formatDollarAmount } from '../../utils';
 
@@ -39,7 +39,13 @@ export default function Income() {
             type: "CLEAR_ALL",
         });
 	};
-		
+
+	const save = () => {
+		dispatch({
+            type: "SAVE",
+        });
+	};
+
 	const totalBudget = state.categories.reduce((sum, c) =>{
 		return sum += Number(c.sum);
 	}, 0);
@@ -50,7 +56,7 @@ export default function Income() {
 	const totalBudgeted = formatDollarAmount(totalBudget);
 	const leftToBudget = formatDollarAmount(takeHome - totalBudget);
 	const progress = Math.min(takeHome, Math.round((totalBudget * 100)/takeHome));
-	console.log(state);
+
 	return (
 		<>
 			<FAQ list={ state.faq } />
@@ -61,7 +67,7 @@ export default function Income() {
 							shrink: true,
 						}}
 						id={ `take_home_money` }
-						label={ 'Monthly Income' }
+						label={ 'Take Home Income' }
 						value={ state.takeHome || '' }
 						onChange={ updateTakeHome } />
 
@@ -92,6 +98,7 @@ export default function Income() {
 					</TableContainer>
 
 					<Button variant={ 'contained' } onClick={ clearAll }>Clear All</Button>
+					<Button style={{ backgroundColor: 'orange', color: 'white' }} variant={ 'contained' } onClick={ save }>Save</Button>
 				</div>
 			</IncomeContainer>
 		</>
@@ -136,6 +143,9 @@ const IncomeContainer = styled(Section).attrs({
 
 		button{
 			margin-top: 30px;
+			margin-right: 15px;
 		}
 	}
+
+
 `;
