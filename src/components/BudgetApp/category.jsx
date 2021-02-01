@@ -27,7 +27,8 @@ export default function Category(props) {
 
     const status = budget >= sum ? 'good' : 'bad';
     const formattedBudget = formatDollarAmount(budget);
-    const progress = Math.min(budget, Math.round((sum * 100)/budget));    
+    const progress = sum ? Math.min(budget, Math.round((sum * 100)/budget)) : 0;    
+
     const leftToBudget = formatDollarAmount(budget - sum);
     const total = formatDollarAmount(sum);
 
@@ -73,9 +74,13 @@ export default function Category(props) {
                             updateCategory={ (index, label) => { updateCategory(index, label) } }
                             updateValue={ (index, value) => { updateValue(index, value) } } />;
                 }) }
-
-                <button disabled={ disableAdd } onClick={ addExpense }>add</button>
-                <button disabled={ disableRemove } onClick={ removeExpense }>remove</button>
+                
+                <button type={ 'button' } disabled={ disableRemove } onClick={ removeExpense }>
+                    - Remove last expense
+                </button>
+                <button type={ 'button' } disabled={ disableAdd } onClick={ addExpense }>
+                    + Add expense
+                </button>
 
                 <div className={ 'total-container' }>
                     <div className={ status }>{ status === 'good' ? 'To' : 'Over' } Budget:</div>
@@ -108,6 +113,17 @@ const CategoryContainer = styled(Section).attrs({
         .bad{
             color: ${theme.error};
         }
+    }
+
+    button{
+        padding: 5px 8px ;
+        font-size: 12px;
+        margin: 10px;
+        border: 1px solid ${theme.link};
+        background: white;
+        border-radius: 4px;
+        background: transparent;
+        color: ${theme.link};
     }
 `;
 

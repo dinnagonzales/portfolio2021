@@ -94,12 +94,12 @@ const BudgetReducer = (state, action) => {
         }
 
         case 'CLEAR_ALL':{
+            const takeHome = 0;
             const clearCategories = _.cloneDeep(state.categories).map( (c, i) =>{
-                const budget = state.takeHome * c.percent;
 
                 return {
                     ...c,
-                    budget,
+                    budget: 0,
                     sum: 0,
                     expenses: [...expenses],
                 }
@@ -107,6 +107,7 @@ const BudgetReducer = (state, action) => {
 
             return {
                 ...state,
+                takeHome,
                 categories: clearCategories,
             }
         }
