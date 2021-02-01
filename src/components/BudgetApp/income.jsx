@@ -19,7 +19,7 @@ import { colors } from '../../styles/default';
 import FAQ from './faq';
 
 import { Section } from '../../styles/common';
-import media from '../../styles/media';
+
 
 import { formatDollarAmount } from '../../utils';
 

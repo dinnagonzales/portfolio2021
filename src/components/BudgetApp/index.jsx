@@ -5,7 +5,7 @@ import IncomeSection from './income.jsx';
 import Categories from './categories.jsx';
 import initialState from './static_data.js';
 import BudgetReducer, { Context } from './store';
-
+import media from '../../styles/media';
 import { theme } from '../../styles/default';
 import Footer from './footer';
 
@@ -37,5 +37,12 @@ const BudgetAppContainer = styled.main.attrs({
 	gap: 15px;
 	a{
 		color: ${ theme.link };
+	}
+
+	& > * {
+		${media.small`
+			grid-column-start: 1;
+			grid-column-end: 3;
+    	`};
 	}
 `;
