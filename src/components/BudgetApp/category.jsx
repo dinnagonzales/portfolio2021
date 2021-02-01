@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Expenses from './expenses';
+import Expenses from './expense';
+import CircularProgressWithLabel from '../common/CircularProgressWIthLabel';
+import { formatDollarAmount } from '../../utils';
+import { Section } from '../../styles/common';
+import { colors, theme } from '../../styles/default';
 
 export default function Category(props) {
     const {
-        finePrint,
         updateCategory,
         updateValue,
         data,
@@ -12,100 +15,100 @@ export default function Category(props) {
 
     const {
         category,
+        type,
+        color,
         sum,
         budget,
         expenses
     } = data;
 
     const status = budget >= sum ? 'good' : 'bad';
+    const formattedBudget = formatDollarAmount(budget);
+    
+    const progress = Math.min(budget, Math.round((sum * 100)/budget));
+    
+    const leftToBudget = formatDollarAmount(budget - sum);
+    const total = formatDollarAmount(sum);
 
     return (
         <CategoryContainer>
-            <h3>{ category }</h3>
-            <div className={ 'budget' }> {/* Percent / $ */}
-                <div /> 
-                <input placeholder={ '$' } value={ budget } readOnly/>
-            </div>
-            <div className={ 'expenses' }> {/* Expenses / cost */}
+
+            <SummarySection color={ colors[color] }>
+                <div>
+                    <h3>{ category }</h3>
+                    <span>Budget: { formattedBudget }</span>
+                </div>       
+                <div>
+                    <CircularProgressWithLabel value={ progress }/>
+                </div>   
+            </SummarySection>
+
+            <div className={ 'expenses-container' }> {/* Expenses / cost */}
                 { expenses.map( (e, index) => {
                     const { label, value } = e;
 
                     return <Expenses key={ `${index}-percent` }
+                            type={ type }
                             label={ label }
                             value={ value }
                             index={ index }
                             updateCategory={ (index, label) => { updateCategory(index, label) } }
                             updateValue={ (index, value) => { updateValue(index, value) } } />;
-                }) }     
+                }) }
+                <div className={ 'total-container' }>
+                    <div className={ status }>{ status === 'good' ? 'To' : 'Over' } Budget:</div>
+                    <div>{ leftToBudget }</div>
+                </div> 
             </div>
-            <div className={ 'totals'}> {/* Label / Total */}
-                <div>Sum</div>
-                <div className={ 'amount' }>$ { sum }</div>
-            </div>
-            <div className={ 'totals'}> {/* Label / Total */}
-                <div>Left to budget</div>
-                <div className={ `${status} amount` }>$ { budget - sum }</div>
-            </div>
-  
-            <div className={ 'finePrint'}>
-                { finePrint }
-            </div>
+
         </CategoryContainer>
     );
 }
 
-const CategoryContainer = styled.div.attrs({
+const CategoryContainer = styled(Section).attrs({
     className: 'CategoryContainer'
 })`
     font-size: 16px;
-    border: 2px solid lightgrey;
-    border-radius: 4px;
-    padding: 1rem;
 
-    .budget{
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(2, minmax(100px, 1fr));
-        justify-content: end;
-        & > * {
-            margin: 1rem 0;
-        }
-        input{
-            display: inline-block;
-        }
-    }
-
-    .expenses{
+    .expenses-container{
         margin: 30px 0;
-        
-        & > div{
-            display: grid;
-            margin: 10px 0;
-            grid-template-columns: repeat(2, minmax(100px, 1fr));
-            gap: 1rem;
-            height: 30px;
-        }
     }
 
-    .totals{
+    .total-container{
+        font-weight: bold;
+        font-size: 20px;
+        margin: 30px 0 10px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
         text-align: left;
 
-        display: grid;
-        grid-template-columns: repeat(2, minmax(100px, 1fr));
-
-        .good{
-            color: green;
-        }
         .bad{
-            color: red;
-        }
-        .amount{
-            padding-left: 10px;
+            color: ${theme.error};
         }
     }
+`;
 
-    .finePrint{
-        font-size: 12px;
-        margin: 45px 0 0;
+const SummarySection = styled.div.attrs({
+    className: 'SummarySection'
+})`
+    margin-bottom: 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 50px;
+    padding: 15px 0 0;
+
+    h3{
+        color: ${ ({ color }) => color ? color : colors.abbey };
+        margin: 10px 0;
+        text-align: left;
+        font-size: 30px;
+        line-height: 20px;
+    }
+
+    span{
+        font-weight: bold;
+        display: block;
+        text-align: left;
     }
 `;

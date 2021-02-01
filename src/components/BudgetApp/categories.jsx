@@ -1,9 +1,12 @@
+import React, { useContext, useReducer } from 'react';
 import styled from 'styled-components';
 
 import Category from './category.jsx';
-import { Store } from './store';
+import { Context } from './store';
 
-export default function Categories({ dispatch }) {
+export default function Categories() {
+    const { dispatch } = useContext(Context);
+
     const updateCategory = (data, categoryIndex) => {
 		dispatch({
 			type: "UPDATE_CATEGORY_NAME",
@@ -23,7 +26,7 @@ export default function Categories({ dispatch }) {
     };
 
     return (
-        <Store.Consumer>
+        <Context.Consumer>
             { ({state}) => {
                 return(
                     <>
@@ -34,22 +37,25 @@ export default function Categories({ dispatch }) {
                                     categoryIndex={ i }
                                     updateCategory={ (data) => updateCategory(data, i) }
                                     updateValue={ (data) => updateValue(data, i) }
-                                    data={ c }
-                                    finePrint={ state.finePrint[i] } />    
+                                    data={ c } />    
                             ))}    
                         </CategoriesContainer>
                     </>
                 );
             }
 }
-        </Store.Consumer>
+        </Context.Consumer>
     );
 }
 
 const CategoriesContainer = styled.div.attrs({
     className: 'CategoriesContainer'
 })`
-    padding: 20px;
+    padding: 20px 0;
+    
+    grid-column-start: 1;
+    grid-column-end: 3;
+
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
