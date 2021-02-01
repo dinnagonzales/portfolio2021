@@ -119,6 +119,8 @@ const BudgetReducer = (state, action) => {
                 ...state
             }
         }
+
+        case 'LOAD_TEMPLATE':
         default:
             return initialState;
     };

@@ -46,6 +46,12 @@ export default function Income() {
         });
 	};
 
+	const loadTemplate = () => {
+		dispatch({
+            type: "LOAD_TEMPLATE",
+        });
+	};
+
 	const totalBudget = state.categories.reduce((sum, c) =>{
 		return sum += Number(c.sum);
 	}, 0);
@@ -98,6 +104,7 @@ export default function Income() {
 					</TableContainer>
 
 					<Button variant={ 'contained' } onClick={ clearAll }>Clear All</Button>
+					<Button variant={ 'contained' } onClick={ loadTemplate }>Load Template</Button>
 					<Button style={{ backgroundColor: 'orange', color: 'white' }} variant={ 'contained' } onClick={ save }>Save</Button>
 				</div>
 			</IncomeContainer>
