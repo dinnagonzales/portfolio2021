@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Expenses from './expense';
+import { Context } from './store';
 import CircularProgressWithLabel from '../common/CircularProgressWIthLabel';
 import { formatDollarAmount } from '../../utils';
 import { Section } from '../../styles/common';
 import { colors, theme } from '../../styles/default';
 
 export default function Category(props) {
+    const { dispatch } = useContext(Context);
     const {
+        categoryIndex,
         updateCategory,
         updateValue,
         data,
@@ -24,11 +27,26 @@ export default function Category(props) {
 
     const status = budget >= sum ? 'good' : 'bad';
     const formattedBudget = formatDollarAmount(budget);
-    
-    const progress = Math.min(budget, Math.round((sum * 100)/budget));
-    
+    const progress = Math.min(budget, Math.round((sum * 100)/budget));    
     const leftToBudget = formatDollarAmount(budget - sum);
     const total = formatDollarAmount(sum);
+
+    const addExpense = () => {
+		dispatch({
+            type: "ADD_EXPENSE",
+            categoryIndex,
+        });
+	};
+
+	const removeExpense = () => {
+		dispatch({
+            type: "REMOVE_EXPENSE",
+            categoryIndex,
+        });
+    };
+    
+    const disableAdd = expenses.length >= 15;
+    const disableRemove = expenses.length <= 3;
 
     return (
         <CategoryContainer>
@@ -55,6 +73,10 @@ export default function Category(props) {
                             updateCategory={ (index, label) => { updateCategory(index, label) } }
                             updateValue={ (index, value) => { updateValue(index, value) } } />;
                 }) }
+
+                <button disabled={ disableAdd } onClick={ addExpense }>add</button>
+                <button disabled={ disableRemove } onClick={ removeExpense }>remove</button>
+
                 <div className={ 'total-container' }>
                     <div className={ status }>{ status === 'good' ? 'To' : 'Over' } Budget:</div>
                     <div>{ leftToBudget }</div>

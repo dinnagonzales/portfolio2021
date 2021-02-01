@@ -1,3 +1,8 @@
+const expense = {
+    label: '',
+    value: 0,
+};
+
 const expenses = [
     {
         label: '',
@@ -193,4 +198,4 @@ const initialState = {
     ]
 };
 
-export { initialState as default, expenses, categories };
+export { initialState as default, expenses, expense, categories };

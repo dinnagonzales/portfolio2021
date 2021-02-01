@@ -56,7 +56,7 @@ export default function Income() {
 	const totalBudgeted = formatDollarAmount(totalBudget);
 	const leftToBudget = formatDollarAmount(takeHome - totalBudget);
 	const progress = Math.min(takeHome, Math.round((totalBudget * 100)/takeHome));
-	console.log(state);
+
 	return (
 		<>
 			<FAQ list={ state.faq } />
