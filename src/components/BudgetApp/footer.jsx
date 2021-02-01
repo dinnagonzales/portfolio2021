@@ -1,14 +1,8 @@
-import React, { useContext } from 'react';
-import { Context }  from './store';
-
 import styled from 'styled-components';
 
 import { theme } from '../../styles/default';
-import media from '../../styles/media';
-
 
 export default function Footer() {
-
 	return (
         <FooterContainer>
             <p>Created by: Dinna Gonzales | Contact:&nbsp;
@@ -16,7 +10,7 @@ export default function Footer() {
                     Email
                 </a>
             </p>
-            <a href="https://www.freepik.com/vectors/people">People vector created by pch.vector - www.freepik.com</a>
+            <a rel="noreferrer" href="https://www.freepik.com/vectors/people">People vector created by pch.vector - www.freepik.com</a>
 		</FooterContainer>
 	);
 }
