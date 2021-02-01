@@ -37,8 +37,7 @@ export default function Categories() {
                                     categoryIndex={ i }
                                     updateCategory={ (data) => updateCategory(data, i) }
                                     updateValue={ (data) => updateValue(data, i) }
-                                    data={ c }
-                                    finePrint={ state.finePrint[i] } />    
+                                    data={ c } />    
                             ))}    
                         </CategoriesContainer>
                     </>
@@ -53,6 +52,10 @@ const CategoriesContainer = styled.div.attrs({
     className: 'CategoriesContainer'
 })`
     padding: 20px 0;
+    
+    grid-column-start: 1;
+    grid-column-end: 3;
+
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));

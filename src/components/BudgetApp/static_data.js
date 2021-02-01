@@ -58,10 +58,22 @@ const categories = [
 
 const initialState = {
     takeHome: 4000,
-    finePrint: [
-        '50% on things you need, necessary expenses like: mortgage or rent, utilities, health care, basic groceries, transportation',
-        '30% on things you want, additional expenses like: cable, internet, phone, dining out, entertainment, personal care, shopping, travel',
-        '20% on building wealth: emergency fund, retirement, savings, student loans'
+    faq: [
+        { 
+            key: 'fifty_percent',
+            header: '50% on things you need.',
+            body: 'Necessary expenses like: mortgage or rent, utilities, health care, basic groceries, transportation',
+        },
+        { 
+            key: 'thirty_percent',
+            header: '30% on things you want.',
+            body: 'Additional expenses like: cable, internet, phone, dining out, entertainment, personal care, shopping, travel',
+        },
+        { 
+            key: 'twenty_percent',
+            header: '20% on building wealth.',
+            body: 'Emergency fund, retirement, savings, student loans',
+        },
     ],
     categories: [
         {
@@ -71,7 +83,36 @@ const initialState = {
             percent: 0.50,
             budget: 2000,
             sum: 0,
-            expenses: [ ...expenses ],
+            expenses: [
+                {
+                    label: 'Housing',
+                    value: 0,
+                },
+                {
+                    label: 'Transportation',
+                    value: 0,
+                },
+                {
+                    label: 'Groceries',
+                    value: 0,
+                },
+                {
+                    label: 'Insurance',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+            ]
         },
         {
             type: 'wants',
@@ -80,7 +121,36 @@ const initialState = {
             percent: 0.30,
             budget: 1200,
             sum: 0,
-            expenses: [ ...expenses ],
+            expenses: [
+                {
+                    label: 'Dining Out',
+                    value: 0,
+                },
+                {
+                    label: 'Subscription',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+            ]
         },
         {
             type: 'savings',
@@ -89,7 +159,36 @@ const initialState = {
             percent: 0.2,
             budget: 800,
             sum: 0,
-            expenses: [ ...expenses ],
+            expenses: [
+                {
+                    label: 'Savings',
+                    value: 0,
+                },
+                {
+                    label: 'Sinking Funds: Travel',
+                    value: 0,
+                },
+                {
+                    label: 'Debt',
+                    value: 0,
+                },
+                {
+                    label: 'Insurance',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+                {
+                    label: '',
+                    value: 0,
+                },
+            ]
         },
     ]
 };

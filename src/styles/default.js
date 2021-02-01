@@ -20,6 +20,7 @@ export const colors = {
 export const theme = {
     text: colors.abbey,
     error: colors.mojo,
+    link: colors.cornflowerBlue,
     border: colors.lightGrey,
     darkBackground: colors.cello,
 };

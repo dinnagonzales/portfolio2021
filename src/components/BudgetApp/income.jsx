@@ -4,12 +4,23 @@ import styled from 'styled-components';
 
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import ProgressBar from '../common/progress_bar';
 
-import img from '../../images/income-bg.png';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+
+import Tooltip from '@material-ui/core/Tooltip';
+import ProgressBar from '../common/progress_bar';
+import { colors } from '../../styles/default';
+import FAQ from './faq';
 
 import { Section } from '../../styles/common';
 import media from '../../styles/media';
+
 import { formatDollarAmount } from '../../utils';
 
 export default function Income() {
@@ -39,30 +50,51 @@ export default function Income() {
 	const totalBudgeted = formatDollarAmount(totalBudget);
 	const leftToBudget = formatDollarAmount(takeHome - totalBudget);
 	const progress = Math.min(takeHome, Math.round((totalBudget * 100)/takeHome));
-
+	console.log(state);
 	return (
-        <IncomeContainer>
-			<div className={ 'background' }></div>
+		<>
+			<FAQ list={ state.faq } />
+			<IncomeContainer>
+				<h2>My Budget</h2>
+				<div className={ 'NumbersContainer' }>
+					<TextField InputLabelProps={{
+							shrink: true,
+						}}
+						id={ `take_home_money` }
+						label={ 'Monthly Income' }
+						value={ state.takeHome || '' }
+						onChange={ updateTakeHome } />
 
-			<div className={ 'NumbersContainer' }>
-				<div>
-					<TextField id="outlined-basic" label="Income" variant="outlined" value={ state.takeHome } onChange={ updateTakeHome } />
+					<TableContainer component={Paper}>
+						<Table aria-label="simple table">
+							{/* state.categories.map((c, i) => {
+								const { type, category, budget, color } = c;
+								return(
+									<TableRow key={ `${i}_${type} `}>	
+										<TableCell align="left" style={{ color: color }}>{ category }</TableCell>
+										<TableCell align="left">{ budget }</TableCell>
+									</TableRow>
+								)
+							}) */}
+							<TableBody>
+								<TableRow>
+									<TableCell align="left">Total Budgeted:</TableCell>
+									<TableCell align="left">{totalBudgeted}</TableCell>
+								</TableRow>
+							</TableBody>
+							<TableBody>
+								<TableRow>	
+									<TableCell align="left">To Budget:</TableCell>
+									<TableCell align="left">{leftToBudget}</TableCell>
+								</TableRow>
+							</TableBody>
+						</Table>
+					</TableContainer>
+
+					<Button variant={ 'contained' } onClick={ clearAll }>Clear All</Button>
 				</div>
-
-				<ProgressBar value={ progress } min={ '0%' } max={ '100%' } />
-
-				<div className={ 'numbers' }>
-					<span>Current Total:</span>
-					<span>{ totalBudgeted }</span>
-				</div>
-				<div className={ `numbers ${diff}` }>
-					<span>Left to budget:</span>
-					<span>{ leftToBudget }</span>
-				</div>
-
-				<Button variant={ 'contained' } onClick={ clearAll }>Clear</Button>
-			</div>
-		</IncomeContainer>
+			</IncomeContainer>
+		</>
 	);
 }
 
@@ -70,32 +102,40 @@ const IncomeContainer = styled(Section).attrs({
 	className: 'IncomeContainer'
 })`
 	min-height: 300px;
-	padding-top: 50px;
 	text-align: right;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
 
-	${media.small`
-		grid-template-columns: 1fr;
-	`};
+	h2{
+		text-align: center;
+	}
 
+	.fifty{
+		color: ${colors.mojo};
+	}
+	.thirty{
+		color: ${colors.goldenBell};
+	}
+	.twenty{
+		color: ${colors.cornflowerBlue};
+	}
+
+	img{
+        height: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 15px;
+        display: block;
+    }
 
 	.NumbersContainer{
 		text-align: right;
-		padding: 0 15px 0 100px;
-	}
+		padding: 15px;
 
-	.numbers{
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		text-align: left;
-		margin: 15px 0;
-	}
+		.MuiTableContainer-root{
+			margin-top: 30px;
+		}
 
-	.background{
-		background-image: url(${img});
-		background-size: 100% auto;
-		background-position: bottom left;
-		background-repeat: no-repeat;
+		button{
+			margin-top: 30px;
+		}
 	}
 `;
