@@ -67,7 +67,12 @@ export default function Income() {
 		<>
 			<FAQ list={ state.faq } />
 			<IncomeContainer>
-				<h2>My Budget</h2>
+				<h2>Free Budget Calculator</h2>
+				<span className={ 'intro' }>
+					Welcome! 
+					Start here: input your monthly after-tax income see how you should
+					split your spending according to the 50/30/20 Budgeting rule.
+				</span>
 				<div className={ 'NumbersContainer' }>
 					<TextField InputLabelProps={{
 							shrink: true,
@@ -117,7 +122,13 @@ const IncomeContainer = styled(Section).attrs({
 })`
 	min-height: 300px;
 	text-align: right;
-
+	.intro{
+		text-align: left;
+		width: 100%;
+		display: block;
+		padding: 10px 0;
+		font-size: 12px;
+	}
 	h2{
 		text-align: center;
 	}

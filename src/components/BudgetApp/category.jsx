@@ -124,6 +124,10 @@ const CategoryContainer = styled(Section).attrs({
         border-radius: 4px;
         background: transparent;
         color: ${theme.link};
+        &:disabled{
+            color: ${colors.linkWater};
+            border: 1px solid ${colors.linkWater};
+        }
     }
 `;
 
