@@ -1,22 +1,24 @@
 {
   "files": {
-    "main.css": "/portfolio2021/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/portfolio2021/static/js/main.65461650.chunk.js",
-    "main.js.map": "/portfolio2021/static/js/main.65461650.chunk.js.map",
-    "runtime-main.js": "/portfolio2021/static/js/runtime-main.9dbe02db.js",
-    "runtime-main.js.map": "/portfolio2021/static/js/runtime-main.9dbe02db.js.map",
-    "static/js/2.a6ae1592.chunk.js": "/portfolio2021/static/js/2.a6ae1592.chunk.js",
-    "static/js/2.a6ae1592.chunk.js.map": "/portfolio2021/static/js/2.a6ae1592.chunk.js.map",
-    "static/js/3.189abcfd.chunk.js": "/portfolio2021/static/js/3.189abcfd.chunk.js",
-    "static/js/3.189abcfd.chunk.js.map": "/portfolio2021/static/js/3.189abcfd.chunk.js.map",
+    "main.css": "/portfolio2021/static/css/main.62a72b4a.chunk.css",
+    "main.js": "/portfolio2021/static/js/main.1fe70495.chunk.js",
+    "main.js.map": "/portfolio2021/static/js/main.1fe70495.chunk.js.map",
+    "runtime-main.js": "/portfolio2021/static/js/runtime-main.d4d700a1.js",
+    "runtime-main.js.map": "/portfolio2021/static/js/runtime-main.d4d700a1.js.map",
+    "static/js/2.aa7daad6.chunk.js": "/portfolio2021/static/js/2.aa7daad6.chunk.js",
+    "static/js/2.aa7daad6.chunk.js.map": "/portfolio2021/static/js/2.aa7daad6.chunk.js.map",
+    "static/js/3.6eab7a4e.chunk.js": "/portfolio2021/static/js/3.6eab7a4e.chunk.js",
+    "static/js/3.6eab7a4e.chunk.js.map": "/portfolio2021/static/js/3.6eab7a4e.chunk.js.map",
     "index.html": "/portfolio2021/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/portfolio2021/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.a6ae1592.chunk.js.LICENSE.txt": "/portfolio2021/static/js/2.a6ae1592.chunk.js.LICENSE.txt"
+    "static/css/main.62a72b4a.chunk.css.map": "/portfolio2021/static/css/main.62a72b4a.chunk.css.map",
+    "static/js/2.aa7daad6.chunk.js.LICENSE.txt": "/portfolio2021/static/js/2.aa7daad6.chunk.js.LICENSE.txt",
+    "static/media/income-bg.beab2a40.png": "/portfolio2021/static/media/income-bg.beab2a40.png",
+    "static/media/sample.5ab26284.png": "/portfolio2021/static/media/sample.5ab26284.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.9dbe02db.js",
-    "static/js/2.a6ae1592.chunk.js",
-    "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.65461650.chunk.js"
+    "static/js/runtime-main.d4d700a1.js",
+    "static/js/2.aa7daad6.chunk.js",
+    "static/css/main.62a72b4a.chunk.css",
+    "static/js/main.1fe70495.chunk.js"
   ]
 }
